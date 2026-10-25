@@ -1,0 +1,27 @@
+:root{
+  /* Primitive palette — OKLCH equivalents of the supplied hex colors. */
+  --p-bg:oklch(0.14984 0.01606 265.802);
+  --p-surface:oklch(0.19747 0.02745 267.726);
+  --p-card:oklch(0.21094 0.03125 267.045);
+  --p-purple:oklch(0.60563 0.21892 292.717);
+  --p-blue:oklch(0.75351 0.13899 232.661);
+  --p-text:oklch(0.98415 0.00341 247.858);
+  --p-muted:oklch(0.73532 0.02264 259.193);
+  /* Semantic tokens */
+  --bg:var(--p-bg);--surface:var(--p-surface);--card:var(--p-card);
+  --accent:var(--p-purple);--secondary:var(--p-blue);
+  --text:var(--p-text);--muted:var(--p-muted);
+  --border:oklch(1 0 0 / 0.10);--border-strong:oklch(1 0 0 / 0.18);
+  --accent-soft:oklch(0.60563 0.21892 292.717 / 0.13);
+  --blue-soft:oklch(0.75351 0.13899 232.661 / 0.10);
+  --danger:oklch(0.72 0.17 24);--success:oklch(0.76 0.14 155);
+  /* Component tokens */
+  --button-bg:var(--accent);--button-text:var(--text);
+  --input-bg:oklch(0.14984 0.01606 265.802 / .65);
+  --font-sans:'Manrope',sans-serif;--font-mono:'JetBrains Mono',monospace;
+  --container:1200px;--gutter:clamp(20px,4vw,48px);
+  --section-space:clamp(88px,11vw,152px);
+  --radius-sm:10px;--radius:16px;--radius-lg:24px;
+  --shadow:0 24px 70px oklch(0.05 0.01 265 / .28);
+  --ease:cubic-bezier(.2,.75,.25,1);
+}

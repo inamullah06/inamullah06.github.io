@@ -1,0 +1,10 @@
+@keyframes hero-enter{from{opacity:0;transform:translateY(22px) scale(.985)}to{opacity:1;transform:none}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes skeleton{to{background-position:-250% 0}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes modal-in{from{opacity:0;transform:translateY(16px) scale(.98)}to{opacity:1;transform:none}}
+.hero-enter{animation:hero-enter .7s var(--ease) both}.hero-enter:nth-child(2){animation-delay:.06s}.hero-enter:nth-child(3){animation-delay:.12s}.hero-enter:nth-child(4){animation-delay:.18s}.hero-enter:nth-child(5){animation-delay:.24s}.hero-enter:nth-child(6){animation-delay:.3s}.hero-visual.hero-enter{animation-delay:.2s}
+.floating-tool{animation:float 5s ease-in-out infinite}.tool-python{animation-delay:-2.2s}.visual-orbit{animation:spin 50s linear infinite}
+.js .reveal{opacity:0;transform:translateY(24px) scale(.99);transition:opacity .65s var(--ease),transform .65s var(--ease)}.js .reveal.is-visible{opacity:1;transform:none}
+.project-card.filter-enter{animation:hero-enter .3s var(--ease) both}.project-modal[open]{animation:modal-in .22s var(--ease)}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.js .reveal{opacity:1;transform:none}.floating-tool,.visual-orbit{animation:none}}
