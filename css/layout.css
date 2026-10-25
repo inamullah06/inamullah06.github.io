@@ -32,7 +32,7 @@ p{max-width:70ch}.lead{font-size:clamp(1.08rem,1.5vw,1.28rem);line-height:1.65;c
 .status-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--secondary);box-shadow:0 0 0 5px var(--blue-soft)}.eyebrow-separator{color:var(--border-strong)}
 .hero-greeting{margin-top:34px;font-size:clamp(1.05rem,1.6vw,1.3rem);font-weight:600;color:var(--secondary)}
 .hero-title{margin-top:12px;font-size:clamp(3.15rem,6.6vw,6.35rem);font-weight:800;line-height:.99;letter-spacing:-.065em;max-width:780px}
-.hero-title span{display:block;color:transparent;background:linear-gradient(100deg,var(--text) 3%,var(--secondary) 48%,var(--accent) 96%);background-clip:text;-webkit-background-clip:text}
+.hero-title .rotating-line{display:block;color:transparent;background:linear-gradient(100deg,var(--text) 3%,var(--secondary) 48%,var(--accent) 96%);background-clip:text;-webkit-background-clip:text}
 .hero-description{margin-top:28px;max-width:590px;color:var(--muted);font-size:clamp(1rem,1.4vw,1.13rem)}
 .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}.hero-socials{display:flex;gap:8px;margin-top:28px}.hero-socials a{display:grid;place-items:center;width:44px;height:44px;border:1px solid transparent;border-radius:9px;color:var(--muted);transition:color .2s,border-color .2s,background-color .2s}.hero-socials a:hover{color:var(--text);border-color:var(--border);background:var(--surface)}
 .hero-visual{position:relative;min-width:0;padding:36px 0 72px}

@@ -7,6 +7,8 @@
 .floating-tool{animation:float 5s ease-in-out infinite}.tool-python{animation-delay:-2.2s}.visual-orbit{animation:spin 50s linear infinite}
 .js .reveal{opacity:0;transform:translateY(24px) scale(.99);transition:opacity .65s var(--ease),transform .65s var(--ease)}.js .reveal.is-visible{opacity:1;transform:none}
 .project-card.filter-enter{animation:hero-enter .3s var(--ease) both}.project-modal[open]{animation:modal-in .22s var(--ease)}
+@keyframes caret-blink{0%,100%{opacity:1}50%{opacity:0}}
+.rotating-caret{display:inline-block;width:3px;height:.9em;margin-left:6px;vertical-align:-.08em;background:var(--secondary);animation:caret-blink 1s step-end infinite}
 @keyframes portrait-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
 @keyframes portrait-glow{0%,100%{box-shadow:var(--shadow),0 0 0 0 var(--accent-soft)}50%{box-shadow:var(--shadow),0 0 0 14px transparent}}
 .hero-portrait{animation:portrait-float 6s ease-in-out infinite,portrait-glow 4s ease-in-out infinite}
