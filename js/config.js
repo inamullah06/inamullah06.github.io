@@ -15,7 +15,9 @@ window.Portfolio.config = {
 
   // Optional FormSubmit or compatible form endpoint. Leave empty for the mailto fallback.
   // Never put private API keys or secrets in this public file.
-  formEndpoint: "",
+  // FormSubmit AJAX endpoint: form posts go to inamullah4938@gmail.com.
+  // First submission triggers a one-time activation email to that inbox.
+  formEndpoint: "https://formsubmit.co/ajax/inamullah4938@gmail.com",
 
   github: {
     username: "inamullah06",
