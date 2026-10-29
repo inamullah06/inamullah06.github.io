@@ -48,7 +48,7 @@ window.Portfolio.projects = [
     notes: "Detailed challenges and lessons learned have not been published yet. Add first-hand project notes here when available.",
     image: "assets/images/project-weather.webp",
     repo: "https://github.com/inamullah06/Inrelligent-Weather",
-    liveUrl: ""
+    liveUrl: "https://inamullah06.github.io/Inrelligent-Weather/"
   },
   {
     id: "github-analytics",
