@@ -16,7 +16,7 @@
 
 /* Animated waving person in the contact section */
 .contact-person{position:relative;display:flex;align-items:center;gap:12px;margin:26px 0 4px}
-.contact-person svg{width:64px;height:64px;color:var(--secondary);animation:person-bob 3.2s ease-in-out infinite}
+.contact-person svg{width:64px;height:64px;padding:10px;box-sizing:border-box;color:var(--secondary);background:var(--accent-soft);border:1px solid var(--border);border-radius:50%;animation:person-bob 3.2s ease-in-out infinite}
 .contact-person-bubble{display:inline-block;padding:8px 14px;background:var(--surface);border:1px solid var(--border);border-radius:16px 16px 16px 4px;font-size:.85rem;font-weight:700;animation:person-bob 3.2s ease-in-out infinite;animation-delay:.4s}
 .wave-arm{transform-box:view-box;transform-origin:44px 42px;animation:wave 2.2s ease-in-out infinite}
 @keyframes wave{0%,100%{transform:rotate(0deg)}25%{transform:rotate(-18deg)}50%{transform:rotate(12deg)}75%{transform:rotate(-14deg)}}
