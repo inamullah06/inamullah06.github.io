@@ -63,7 +63,7 @@ window.Portfolio.projects = [
     notes: "Detailed challenges and lessons learned have not been published yet. Displayed metrics depend on the public data returned by GitHub.",
     image: "assets/images/project-analytics.webp",
     repo: "https://github.com/inamullah06/GitHub-Analytics-Dashboard",
-    liveUrl: ""
+    liveUrl: "https://app-a-k5vf4n9fkvjz7qzfmpwbge.streamlit.app/"
   },
   {
     id: "speech-voice-detection",
