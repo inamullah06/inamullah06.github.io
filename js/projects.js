@@ -15,7 +15,7 @@ window.Portfolio.projects = [
     features: ["Addition, subtraction, multiplication, and division", "Flutter-based mobile interface", "Responsive user interaction"],
     stack: ["Flutter", "Dart", "Material Design"],
     implementation: "The public repository contains a Flutter project with lib, test, Android, iOS, web, and Windows targets.",
-    notes: "Detailed challenges and lessons learned have not been published yet. Add first-hand project notes here when available.",
+    notes: "Detailed challenges and lessons learned have not been published yet.",
     image: "assets/images/project-calculator.webp",
     repo: "https://github.com/inamullah06/Calculator",
     liveUrl: "https://inamullah06.github.io/Calculator/"
@@ -39,13 +39,13 @@ window.Portfolio.projects = [
     id: "atmosphere-ai",
     title: "Atmosphere AI",
     type: "Weather dashboard",
-    categories: ["Web"],
+    categories: ["Web", "AI"],
     description: "A responsive weather dashboard for current conditions, forecasts, and atmospheric information.",
     overview: "Atmosphere AI presents weather information through a modern dashboard. Its public README describes city search, current conditions, forecasts, humidity, wind, pressure, and sunrise and sunset information.",
     features: ["City-based weather search", "Current conditions and forecasts", "Atmospheric details and weather visualization"],
     stack: ["HTML", "CSS", "JavaScript", "Weather API"],
     implementation: "The public repository is a framework-free web project with separate styles, an AI engine script, and a weather-particles script. AI-powered insights are described conditionally in the README and are not claimed as verified here.",
-    notes: "Detailed challenges and lessons learned have not been published yet. Add first-hand project notes here when available.",
+    notes: "Detailed challenges and lessons learned have not been published yet.",
     image: "assets/images/project-weather.webp",
     repo: "https://github.com/inamullah06/Inrelligent-Weather",
     liveUrl: "https://inamullah06.github.io/Inrelligent-Weather/"
@@ -75,7 +75,7 @@ window.Portfolio.projects = [
     features: ["Audio input and speech-detection exploration", "Voice and audio signal analysis", "A foundation for further speech-processing work"],
     stack: ["Flutter", "Dart", "Audio processing"],
     implementation: "The public repository contains a Flutter project structure with lib, test, mobile, web, and desktop targets. Machine-learning integration is not claimed as implemented.",
-    notes: "Detailed challenges and lessons learned have not been published yet. Add first-hand project notes here when available.",
+    notes: "Detailed challenges and lessons learned have not been published yet.",
     image: "assets/images/project-speech.webp",
     repo: "https://github.com/inamullah06/Speech_Voice_Delect",
     liveUrl: "https://inamullah06.github.io/Speech_Voice_Delect/"

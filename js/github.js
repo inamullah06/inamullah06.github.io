@@ -34,7 +34,7 @@ window.Portfolio.initGithub = function () {
       top.appendChild(make("span", "repo-language", repo.language || "Repository"));
       card.appendChild(top);
       card.appendChild(make("h3", "", repo.name));
-      card.appendChild(make("p", "", repo.description || "A public repository by Inam Ullah. Open GitHub to learn more."));
+      if (repo.description) card.appendChild(make("p", "", repo.description));
       const bottom = make("div", "repo-bottom");
       if (typeof repo.stargazers_count === "number") {
         const stars = make("span", "", `★ ${repo.stargazers_count}`);

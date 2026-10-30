@@ -22,7 +22,7 @@ window.Portfolio.config = {
   github: {
     username: "inamullah06",
     cacheMinutes: 30,
-    repositoryLimit: 6
+    repositoryLimit: 12
   },
 
   skills: [
