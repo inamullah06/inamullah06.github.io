@@ -18,7 +18,7 @@ window.Portfolio.projects = [
     notes: "Detailed challenges and lessons learned have not been published yet. Add first-hand project notes here when available.",
     image: "assets/images/project-calculator.webp",
     repo: "https://github.com/inamullah06/Calculator",
-    liveUrl: ""
+    liveUrl: "https://inamullah06.github.io/Calculator/"
   },
   {
     id: "bmi-calculator",
@@ -33,7 +33,7 @@ window.Portfolio.projects = [
     notes: "Detailed challenges and lessons learned have not been published yet. BMI is a screening measure, not a medical diagnosis.",
     image: "assets/images/project-bmi.webp",
     repo: "https://github.com/inamullah06/BMI",
-    liveUrl: ""
+    liveUrl: "https://inamullah06.github.io/BMI/"
   },
   {
     id: "atmosphere-ai",
@@ -78,6 +78,6 @@ window.Portfolio.projects = [
     notes: "Detailed challenges and lessons learned have not been published yet. Add first-hand project notes here when available.",
     image: "assets/images/project-speech.webp",
     repo: "https://github.com/inamullah06/Speech_Voice_Delect",
-    liveUrl: ""
+    liveUrl: "https://inamullah06.github.io/Speech_Voice_Delect/"
   }
 ];
