@@ -31,7 +31,7 @@
   function startScene() {
     if (started) return;
     started = true;
-  import('https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js')
+  import('https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.min.js')
     .then(function (THREE) {
       var renderer;
       try {
