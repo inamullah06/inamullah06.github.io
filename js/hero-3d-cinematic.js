@@ -11,16 +11,26 @@
  * Kept dim and ambient so hero text and the student ID card stay legible;
  * on narrow screens the scene scales down and thins out so it never
  * covers the title. Same safety as the previous scene: pixel ratio capped
- * at 2, rendering pauses when the tab is hidden or the hero is off-screen,
- * one static frame for prefers-reduced-motion, and if Three.js/WebGL fails
- * the canvas simply stays empty and the hero looks exactly as before.
- * No control row is added, so nothing can overlap hero content.
+ * at 2 (1.5 on narrow screens), rendering pauses when the tab is hidden or
+ * the hero is off-screen, one static frame for prefers-reduced-motion, and
+ * if Three.js/WebGL fails the canvas simply stays empty and the hero looks
+ * exactly as before. No control row is added, so nothing can overlap hero
+ * content.
+ *
+ * Performance: Three.js is NOT fetched or parsed during first paint. The
+ * scene starts only after the window load event, when the browser is idle,
+ * so LCP and Total Blocking Time are not hit by Three.js parsing.
  */
 (function () {
   'use strict';
   var canvas = document.getElementById('hero-3d-canvas');
   if (!canvas) return;
   var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  /* Deferred start: fetch Three.js only after load, when idle. */
+  var started = false;
+  function startScene() {
+    if (started) return;
+    started = true;
   import('https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js')
     .then(function (THREE) {
       var renderer;
@@ -29,7 +39,7 @@
       } catch (e) {
         return; /* No WebGL - leave the hero as it was. */
       }
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, window.innerWidth <= 900 ? 1.5 : 2));
       renderer.setClearColor(0x000000, 0);
       var scene = new THREE.Scene();
       scene.fog = new THREE.Fog(0x080b12, 9, 24);
@@ -119,7 +129,7 @@
       cinematic.add(orbit);
       scene.add(cinematic);
       /* ---- Particle starfield ---- */
-      var COUNT = narrow ? 160 : 320;
+      var COUNT = narrow ? 120 : 320;
       var positions = new Float32Array(COUNT * 3);
       var colors = new Float32Array(COUNT * 3);
       var palette = [
@@ -155,7 +165,7 @@
       }
       var glyphTexts = ['</>', '{ }', '=>', ';'];
       var glyphs = [];
-      var glyphCount = narrow ? 6 : 12;
+      var glyphCount = narrow ? 4 : 12;
       for (var g = 0; g < glyphCount; g++) {
         var gt = glyphTexts[g % glyphTexts.length];
         var sp2 = new THREE.Sprite(new THREE.SpriteMaterial({
@@ -225,4 +235,17 @@
       tick();
     })
     .catch(function () { /* CDN unreachable - hero stays as before. */ });
+  }
+  function scheduleScene() {
+    if ('requestIdleCallback' in window) {
+      window.requestIdleCallback(startScene, { timeout: 1500 });
+    } else {
+      setTimeout(startScene, 500);
+    }
+  }
+  if (document.readyState === 'complete') {
+    scheduleScene();
+  } else {
+    window.addEventListener('load', scheduleScene);
+  }
 })();
