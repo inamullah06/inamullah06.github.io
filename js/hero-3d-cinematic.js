@@ -173,7 +173,7 @@
         renderer.setSize(w, h, false);
         camera.aspect = w / h;
         camera.updateProjectionMatrix();
-        if (w > 900) { cinematic.scale.setScalar(1); cinematic.position.set(1.4, 0, -1); }
+        if (w > 900) { cinematic.scale.setScalar(1); cinematic.position.set(0.2, 0, -1); }
         else { cinematic.scale.setScalar(0.62); cinematic.position.set(0, -0.2, -1); }
       }
       window.addEventListener('resize', resize);
