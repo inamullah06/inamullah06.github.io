@@ -27,8 +27,9 @@
       }
 .cyber-scene .flip {
         position: relative;
-        width: min(350px, calc(100vw - 48px));
+        width: min(290px, calc(100vw - 48px));
         aspect-ratio: 350 / 664;
+        margin-inline: auto;
         transform-style: preserve-3d;
         transition: transform 0.9s cubic-bezier(0.2, 0.7, 0.25, 1);
       }
@@ -38,7 +39,7 @@
         inset: 0;
         backface-visibility: hidden;
         -webkit-backface-visibility: hidden;
-        border-radius: 22px;
+        border-radius: 18px;
         overflow: hidden;
       }
 .cyber-scene .face.back { transform: rotateY(180deg); }
@@ -101,13 +102,13 @@
         height: 100%;
         display: flex;
         flex-direction: column;
-        padding: 14px 18px 16px;
+        padding: 12px 15px 13px;
       }
 /* lanyard slot */
 .cyber-scene .slot-row { display: flex; justify-content: center; padding-top: 2px; }
 .cyber-scene .slot {
-        width: 92px;
-        height: 15px;
+        width: 76px;
+        height: 12px;
         border-radius: 999px;
         background: linear-gradient(180deg, #02070b, #12242f);
         border: 1px solid rgba(148, 213, 245, 0.4);
@@ -120,16 +121,16 @@
 .cyber-scene .card-head {
         display: flex;
         align-items: center;
-        gap: 10px;
-        margin-top: 12px;
-        padding-bottom: 10px;
+        gap: 8px;
+        margin-top: 10px;
+        padding-bottom: 8px;
         border-bottom: 1px solid rgba(125, 211, 252, 0.28);
       }
 .cyber-scene .crest {
         flex: none;
-        width: 40px;
-        height: 40px;
-        border-radius: 10px;
+        width: 33px;
+        height: 33px;
+        border-radius: 8px;
         display: grid;
         place-items: center;
         background: linear-gradient(150deg, #164e63, #0b2531);
@@ -141,13 +142,13 @@
 .cyber-scene .head-text .uni {
         font-family: "Chakra Petch", sans-serif;
         font-weight: 700;
-        font-size: 12.5px;
+        font-size: 10.5px;
         letter-spacing: 0.05em;
         line-height: 1.25;
         color: #f0f9ff;
       }
 .cyber-scene .head-text .dept {
-        font-size: 9px;
+        font-size: 7.5px;
         letter-spacing: 0.16em;
         text-transform: uppercase;
         color: #7dd3fc;
@@ -159,18 +160,18 @@
         text-align: center;
         border: 1px solid rgba(250, 204, 21, 0.55);
         border-radius: 8px;
-        padding: 4px 7px 3px;
+        padding: 3px 6px 2px;
         background: rgba(250, 204, 21, 0.07);
       }
 .cyber-scene .clearance .lvl {
         font-family: "Chakra Petch", sans-serif;
         font-weight: 700;
-        font-size: 15px;
+        font-size: 12.5px;
         color: #fde047;
         line-height: 1;
       }
 .cyber-scene .clearance .lbl {
-        font-size: 7.5px;
+        font-size: 6px;
         letter-spacing: 0.14em;
         color: #fde68a;
         text-transform: uppercase;
@@ -178,12 +179,12 @@
       }
 /* metallic tag bar — ABOVE the photo */
 .cyber-scene .tagbar {
-        margin-top: 10px;
+        margin-top: 8px;
         display: flex;
         flex-wrap: wrap;
-        gap: 6px;
-        padding: 7px 8px;
-        border-radius: 9px;
+        gap: 5px;
+        padding: 6px 7px;
+        border-radius: 8px;
         background: linear-gradient(180deg, #3d4c58 0%, #1d2a34 45%, #141f28 55%, #2b3a45 100%);
         border: 1px solid rgba(186, 230, 253, 0.35);
         box-shadow:
@@ -194,12 +195,12 @@
 .cyber-scene .tag {
         flex: 1 1 auto;
         text-align: center;
-        font-size: 10px;
+        font-size: 8.5px;
         font-weight: 600;
         letter-spacing: 0.08em;
         text-transform: uppercase;
-        padding: 5px 6px;
-        border-radius: 6px;
+        padding: 4px 5px;
+        border-radius: 5px;
         color: #e0f2fe;
         background: rgba(8, 20, 30, 0.55);
         border: 1px solid rgba(125, 211, 252, 0.3);
@@ -214,16 +215,16 @@
 /* photo window */
 .cyber-scene .photo-wrap {
         position: relative;
-        margin-top: 10px;
-        border-radius: 12px;
-        width: 216px;
+        margin-top: 8px;
+        border-radius: 10px;
+        width: 168px;
         margin-left: auto;
         margin-right: auto;
       }
 .cyber-scene .photo-frame {
         position: relative;
-        height: 232px;
-        border-radius: 12px;
+        height: 181px;
+        border-radius: 10px;
         overflow: hidden;
         border: 1px solid rgba(103, 232, 249, 0.5);
         background: #0b2233;
@@ -251,9 +252,9 @@
         position: absolute;
         left: 0;
         right: 0;
-        height: 52px;
+        height: 40px;
         top: 0;
-        transform: translateY(-52px);
+        transform: translateY(-40px);
         background: linear-gradient(
           180deg, transparent, rgba(34, 211, 238, 0.35) 55%, rgba(165, 243, 252, 0.85) 88%, #ecfeff 100%
         );
@@ -263,75 +264,76 @@
         z-index: 3;
       }
 /* Perf: the beam now moves with transform (composited) instead of the "top"
-   property, so the sweep no longer causes layout shifts. 232px is the
-   .photo-frame height: the beam starts just above the frame (-52px) and
-   ends with its top edge at the frame's bottom edge (232px) — visually
-   identical to the old top:-52px -> top:100% motion. */
+   property, so the sweep no longer causes layout shifts. 181px is the
+   .photo-frame height: the beam starts just above the frame (-40px) and
+   ends with its top edge at the frame's bottom edge (181px) — visually
+   identical to the old top:-52px -> top:100% motion, rescaled to the
+   smaller photo. */
 @keyframes scan {
-        0% { transform: translateY(-52px); }
-        55% { transform: translateY(232px); }
-        100% { transform: translateY(232px); }
+        0% { transform: translateY(-40px); }
+        55% { transform: translateY(181px); }
+        100% { transform: translateY(181px); }
       }
 .cyber-scene .bracket {
         position: absolute;
-        width: 26px;
-        height: 26px;
+        width: 22px;
+        height: 22px;
         z-index: 4;
         filter: drop-shadow(0 0 5px rgba(34, 211, 238, 0.9));
       }
-.cyber-scene .bracket.tl { top: -7px; left: -7px; border-top: 3px solid #22d3ee; border-left: 3px solid #22d3ee; border-top-left-radius: 8px; }
-.cyber-scene .bracket.tr { top: -7px; right: -7px; border-top: 3px solid #22d3ee; border-right: 3px solid #22d3ee; border-top-right-radius: 8px; }
-.cyber-scene .bracket.bl { bottom: -7px; left: -7px; border-bottom: 3px solid #22d3ee; border-left: 3px solid #22d3ee; border-bottom-left-radius: 8px; }
-.cyber-scene .bracket.br { bottom: -7px; right: -7px; border-bottom: 3px solid #22d3ee; border-right: 3px solid #22d3ee; border-bottom-right-radius: 8px; }
+.cyber-scene .bracket.tl { top: -6px; left: -6px; border-top: 3px solid #22d3ee; border-left: 3px solid #22d3ee; border-top-left-radius: 8px; }
+.cyber-scene .bracket.tr { top: -6px; right: -6px; border-top: 3px solid #22d3ee; border-right: 3px solid #22d3ee; border-top-right-radius: 8px; }
+.cyber-scene .bracket.bl { bottom: -6px; left: -6px; border-bottom: 3px solid #22d3ee; border-left: 3px solid #22d3ee; border-bottom-left-radius: 8px; }
+.cyber-scene .bracket.br { bottom: -6px; right: -6px; border-bottom: 3px solid #22d3ee; border-right: 3px solid #22d3ee; border-bottom-right-radius: 8px; }
 .cyber-scene .photo-chip-label {
         position: absolute;
-        left: 10px;
-        bottom: 8px;
+        left: 8px;
+        bottom: 7px;
         z-index: 4;
-        font-size: 8.5px;
+        font-size: 7px;
         letter-spacing: 0.22em;
         color: rgba(207, 250, 254, 0.85);
         text-transform: uppercase;
         text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
       }
 /* identity block */
-.cyber-scene .identity { margin-top: 12px; text-align: center; }
+.cyber-scene .identity { margin-top: 10px; text-align: center; }
 .cyber-scene .identity .name {
         font-family: "Chakra Petch", sans-serif;
         font-weight: 700;
-        font-size: 23px;
+        font-size: 19px;
         letter-spacing: 0.18em;
         color: #f8fafc;
         line-height: 1.05;
         text-shadow: 0 0 18px rgba(34, 211, 238, 0.35);
       }
 .cyber-scene .identity .role {
-        margin-top: 4px;
-        font-size: 10px;
+        margin-top: 3px;
+        font-size: 8.5px;
         letter-spacing: 0.28em;
         text-transform: uppercase;
         color: #7dd3fc;
       }
 .cyber-scene .id-grid {
-        margin-top: 10px;
+        margin-top: 8px;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
-        gap: 8px;
+        gap: 7px;
       }
 .cyber-scene .id-cell {
         border: 1px solid rgba(125, 211, 252, 0.22);
-        border-radius: 8px;
-        padding: 6px 4px 5px;
+        border-radius: 7px;
+        padding: 5px 3px 4px;
         background: rgba(8, 20, 30, 0.45);
       }
 .cyber-scene .id-cell .k {
-        font-size: 7.5px;
+        font-size: 6px;
         letter-spacing: 0.18em;
         text-transform: uppercase;
         color: #7d93a3;
       }
 .cyber-scene .id-cell .v {
-        font-size: 11px;
+        font-size: 9px;
         font-weight: 600;
         color: #e0f2fe;
         margin-top: 2px;
@@ -340,16 +342,16 @@
 /* footer: chip + barcode */
 .cyber-scene .card-foot {
         margin-top: auto;
-        padding-top: 10px;
+        padding-top: 8px;
         display: flex;
         align-items: flex-end;
-        gap: 14px;
+        gap: 12px;
       }
 .cyber-scene .chip-block { flex: none; text-align: center; }
 .cyber-scene .chip {
-        width: 46px;
-        height: 34px;
-        border-radius: 6px;
+        width: 38px;
+        height: 28px;
+        border-radius: 5px;
         background: linear-gradient(135deg, #f6d365 0%, #d4af37 35%, #a97e14 60%, #e9c860 100%);
         border: 1px solid rgba(120, 84, 10, 0.8);
         position: relative;
@@ -376,8 +378,8 @@
         border-radius: 3px;
       }
 .cyber-scene .chip-block .chip-lbl {
-        margin-top: 4px;
-        font-size: 7.5px;
+        margin-top: 3px;
+        font-size: 6px;
         letter-spacing: 0.2em;
         color: #93a9b8;
         text-transform: uppercase;
@@ -386,28 +388,28 @@
 .cyber-scene .barcode {
         display: flex;
         align-items: stretch;
-        height: 34px;
+        height: 28px;
         gap: 0;
         background: #f8fafc;
         border-radius: 4px;
-        padding: 4px 6px;
+        padding: 3px 5px;
       }
 .cyber-scene .barcode i { display: block; background: #0b1520; }
 .cyber-scene .barcode-num {
-        margin-top: 4px;
+        margin-top: 3px;
         text-align: center;
-        font-size: 10px;
+        font-size: 8.5px;
         letter-spacing: 0.3em;
         color: #bae6fd;
       }
 .cyber-scene .side-stamp {
         flex: none;
-        font-size: 8px;
+        font-size: 7px;
         letter-spacing: 0.16em;
         color: #a5f3fc;
         border: 1px solid rgba(103, 232, 249, 0.5);
-        border-radius: 5px;
-        padding: 4px 5px;
+        border-radius: 4px;
+        padding: 3px 4px;
         text-transform: uppercase;
         writing-mode: vertical-rl;
         background: rgba(8, 47, 73, 0.35);
@@ -415,48 +417,48 @@
 /* ---------- card back ---------- */
 .cyber-scene .back .card-inner { padding-top: 0; }
 .cyber-scene .magstripe {
-        margin: 0 -18px;
-        height: 44px;
+        margin: 0 -15px;
+        height: 36px;
         background: linear-gradient(180deg, #05090d, #131c24 50%, #05090d);
         border-bottom: 1px solid rgba(125, 211, 252, 0.25);
       }
 .cyber-scene .back h2 {
         font-family: "Chakra Petch", sans-serif;
-        font-size: 14px;
+        font-size: 12px;
         letter-spacing: 0.1em;
         text-transform: uppercase;
-        margin: 18px 0 4px;
+        margin: 15px 0 3px;
         color: #f0f9ff;
         line-height: 1.35;
       }
 .cyber-scene .back .back-sub {
-        font-size: 9.5px;
+        font-size: 8px;
         letter-spacing: 0.2em;
         text-transform: uppercase;
         color: #7dd3fc;
       }
 .cyber-scene .sig-strip {
-        margin-top: 18px;
+        margin-top: 15px;
         background: #e8eef2;
         border-radius: 4px;
-        padding: 8px 12px 6px;
+        padding: 7px 10px 5px;
         color: #334155;
       }
 .cyber-scene .sig-strip .sig {
         font-family: "Chakra Petch", sans-serif;
         font-style: italic;
         font-weight: 600;
-        font-size: 17px;
+        font-size: 14px;
         color: #0f2a3d;
       }
-.cyber-scene .sig-strip .sig-lbl { font-size: 7.5px; letter-spacing: 0.2em; text-transform: uppercase; color: #64748b; }
-.cyber-scene .back-lines { margin-top: 16px; font-size: 10.5px; line-height: 1.9; color: #a9c3d2; }
+.cyber-scene .sig-strip .sig-lbl { font-size: 6px; letter-spacing: 0.2em; text-transform: uppercase; color: #64748b; }
+.cyber-scene .back-lines { margin-top: 13px; font-size: 9px; line-height: 1.9; color: #a9c3d2; }
 .cyber-scene .back-lines b { color: #e0f2fe; font-weight: 600; }
-.cyber-scene .back .barcode { height: 46px; margin-top: 16px; }
+.cyber-scene .back .barcode { height: 38px; margin-top: 13px; }
 .cyber-scene .holo-seal {
-        margin: 18px auto 0;
-        width: 74px;
-        height: 74px;
+        margin: 15px auto 0;
+        width: 61px;
+        height: 61px;
         border-radius: 50%;
         background: conic-gradient(from 20deg, #f0abfc, #67e8f9, #fde68a, #86efac, #93c5fd, #f0abfc);
         opacity: 0.85;
@@ -465,13 +467,13 @@
         box-shadow: 0 0 22px -4px rgba(103, 232, 249, 0.7);
       }
 .cyber-scene .holo-seal span {
-        width: 52px;
-        height: 52px;
+        width: 43px;
+        height: 43px;
         border-radius: 50%;
         background: #0a141d;
         display: grid;
         place-items: center;
-        font-size: 8px;
+        font-size: 7px;
         letter-spacing: 0.14em;
         color: #a5f3fc;
         text-align: center;
@@ -479,7 +481,7 @@
       }
 .cyber-scene .back-foot {
         margin-top: auto;
-        font-size: 8.5px;
+        font-size: 7px;
         letter-spacing: 0.14em;
         text-transform: uppercase;
         color: #647d8d;
@@ -510,6 +512,6 @@
 .cyber-scene .controls button:active { transform: scale(0.97); }
 .cyber-scene .controls button:focus-visible { outline: 2px solid #22d3ee; outline-offset: 2px; }
 @media (prefers-reduced-motion: reduce) {
-.cyber-scene .scanbeam { animation: none; top: 0; transform: translateY(92.8px); opacity: 0.5; }/* 92.8px = 40% of the 232px photo frame, same resting spot as before. */
+.cyber-scene .scanbeam { animation: none; top: 0; transform: translateY(72.4px); opacity: 0.5; }/* 72.4px = 40% of the 181px photo frame, same resting spot as before. */
 .cyber-scene .flip { transition: none; }
 }
