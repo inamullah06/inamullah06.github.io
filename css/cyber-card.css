@@ -1,0 +1,509 @@
+/* cyber-card.css — Futuristic 3D Cyber ID Card, integrated into the portfolio hero.
+ *
+ * Source: workspace/your_files/futuristic-3d-cyber-id-card-inam-ullah/
+ * (standalone export). All rules are scoped under .cyber-scene so they
+ * cannot clash with the portfolio's own styles.
+ *
+ * Hero adaptations (vs the standalone page):
+ * - Page-level rules dropped (:root vars, body, .intro, .hint).
+ * - .stage padding reduced (34px/26px -> 12px/14px); .hero-visual already
+ *   supplies the surrounding space.
+ * - Control button colours hardcoded to the standalone page's dark values
+ *   (the portfolio is dark-only; the :root vars don't exist here).
+ * - Photo uses <picture> (assets/images/profile.webp + profile.png fallback),
+ *   NOT the 1.19 MB base64 copy from the export.
+ */
+
+/* ---------- 3D stage ---------- */
+.cyber-scene .stage {
+        perspective: 1400px;
+        perspective-origin: 50% 40%;
+        padding: 12px 0 14px;
+        touch-action: pan-y;
+      }
+.cyber-scene .tilt {
+        transform-style: preserve-3d;
+        will-change: transform;
+      }
+.cyber-scene .flip {
+        position: relative;
+        width: min(350px, calc(100vw - 48px));
+        aspect-ratio: 350 / 664;
+        transform-style: preserve-3d;
+        transition: transform 0.9s cubic-bezier(0.2, 0.7, 0.25, 1);
+      }
+.cyber-scene .flip.flipped { transform: rotateY(180deg); }
+.cyber-scene .face {
+        position: absolute;
+        inset: 0;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        border-radius: 22px;
+        overflow: hidden;
+      }
+.cyber-scene .face.back { transform: rotateY(180deg); }
+/* ---------- card body ---------- */
+.cyber-scene .card {
+        background:
+          radial-gradient(120% 60% at 85% 0%, rgba(34, 211, 238, 0.16), transparent 55%),
+          radial-gradient(90% 50% at 0% 100%, rgba(14, 116, 144, 0.22), transparent 55%),
+          linear-gradient(165deg, #101c26 0%, #0a141d 48%, #0d1a24 100%);
+        border: 1px solid rgba(125, 211, 252, 0.35);
+        box-shadow:
+          0 30px 60px -18px rgba(2, 12, 20, 0.65),
+          0 0 0 1px rgba(0, 0, 0, 0.4),
+          0 0 34px -6px rgba(34, 211, 238, 0.35),
+          inset 0 1px 0 rgba(186, 230, 253, 0.25);
+        color: #e6f4fb;
+        font-family: "IBM Plex Mono", monospace;
+      }
+.cyber-scene .card::before {
+        /* fine circuit texture */
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(rgba(125, 211, 252, 0.05) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(125, 211, 252, 0.05) 1px, transparent 1px);
+        background-size: 26px 26px;
+        pointer-events: none;
+      }
+/* holographic rainbow sheen, driven by tilt vars */
+.cyber-scene .sheen {
+        position: absolute;
+        inset: -40%;
+        background: conic-gradient(
+          from calc(var(--sheen-rot, 0) * 1deg) at 50% 50%,
+          rgba(255, 0, 128, 0.16), rgba(255, 180, 0, 0.16), rgba(0, 255, 170, 0.16),
+          rgba(0, 160, 255, 0.16), rgba(140, 0, 255, 0.16), rgba(255, 0, 128, 0.16)
+        );
+        mix-blend-mode: screen;
+        opacity: var(--sheen-o, 0);
+        transition: opacity 0.45s ease;
+        pointer-events: none;
+        z-index: 6;
+      }
+.cyber-scene .glare {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          420px circle at var(--gx, 50%) var(--gy, 50%),
+          rgba(255, 255, 255, 0.16), transparent 45%
+        );
+        opacity: var(--sheen-o, 0);
+        transition: opacity 0.45s ease;
+        pointer-events: none;
+        z-index: 7;
+      }
+.cyber-scene .card-inner {
+        position: relative;
+        z-index: 2;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        padding: 14px 18px 16px;
+      }
+/* lanyard slot */
+.cyber-scene .slot-row { display: flex; justify-content: center; padding-top: 2px; }
+.cyber-scene .slot {
+        width: 92px;
+        height: 15px;
+        border-radius: 999px;
+        background: linear-gradient(180deg, #02070b, #12242f);
+        border: 1px solid rgba(148, 213, 245, 0.4);
+        box-shadow:
+          inset 0 3px 6px rgba(0, 0, 0, 0.9),
+          inset 0 -1px 2px rgba(148, 213, 245, 0.25),
+          0 1px 0 rgba(186, 230, 253, 0.18);
+      }
+/* header */
+.cyber-scene .card-head {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 12px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid rgba(125, 211, 252, 0.28);
+      }
+.cyber-scene .crest {
+        flex: none;
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(150deg, #164e63, #0b2531);
+        border: 1px solid rgba(103, 232, 249, 0.55);
+        box-shadow: 0 0 14px -2px rgba(34, 211, 238, 0.55);
+      }
+.cyber-scene .crest svg { display: block; }
+.cyber-scene .head-text { min-width: 0; }
+.cyber-scene .head-text .uni {
+        font-family: "Chakra Petch", sans-serif;
+        font-weight: 700;
+        font-size: 12.5px;
+        letter-spacing: 0.05em;
+        line-height: 1.25;
+        color: #f0f9ff;
+      }
+.cyber-scene .head-text .dept {
+        font-size: 9px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: #7dd3fc;
+        margin-top: 3px;
+      }
+.cyber-scene .clearance {
+        margin-left: auto;
+        flex: none;
+        text-align: center;
+        border: 1px solid rgba(250, 204, 21, 0.55);
+        border-radius: 8px;
+        padding: 4px 7px 3px;
+        background: rgba(250, 204, 21, 0.07);
+      }
+.cyber-scene .clearance .lvl {
+        font-family: "Chakra Petch", sans-serif;
+        font-weight: 700;
+        font-size: 15px;
+        color: #fde047;
+        line-height: 1;
+      }
+.cyber-scene .clearance .lbl {
+        font-size: 7.5px;
+        letter-spacing: 0.14em;
+        color: #fde68a;
+        text-transform: uppercase;
+        margin-top: 2px;
+      }
+/* metallic tag bar — ABOVE the photo */
+.cyber-scene .tagbar {
+        margin-top: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        padding: 7px 8px;
+        border-radius: 9px;
+        background: linear-gradient(180deg, #3d4c58 0%, #1d2a34 45%, #141f28 55%, #2b3a45 100%);
+        border: 1px solid rgba(186, 230, 253, 0.35);
+        box-shadow:
+          inset 0 1px 0 rgba(255, 255, 255, 0.28),
+          inset 0 -1px 0 rgba(0, 0, 0, 0.6),
+          0 4px 10px -4px rgba(0, 0, 0, 0.7);
+      }
+.cyber-scene .tag {
+        flex: 1 1 auto;
+        text-align: center;
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        padding: 5px 6px;
+        border-radius: 6px;
+        color: #e0f2fe;
+        background: rgba(8, 20, 30, 0.55);
+        border: 1px solid rgba(125, 211, 252, 0.3);
+        white-space: nowrap;
+      }
+.cyber-scene .tag.verified {
+        color: #052e16;
+        background: linear-gradient(180deg, #4ade80, #22c55e);
+        border-color: rgba(187, 247, 208, 0.8);
+        box-shadow: 0 0 12px -2px rgba(74, 222, 128, 0.7);
+      }
+/* photo window */
+.cyber-scene .photo-wrap {
+        position: relative;
+        margin-top: 10px;
+        border-radius: 12px;
+        width: 216px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+.cyber-scene .photo-frame {
+        position: relative;
+        height: 232px;
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid rgba(103, 232, 249, 0.5);
+        background: #0b2233;
+      }
+.cyber-scene .photo-frame img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 20%;
+        display: block;
+      }
+.cyber-scene .photo-frame picture { display: block; width: 100%; height: 100%; }
+
+.cyber-scene .photo-frame::after {
+        /* scanline texture over photo */
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: repeating-linear-gradient(
+          0deg, rgba(255, 255, 255, 0.045) 0 1px, transparent 1px 4px
+        );
+        pointer-events: none;
+      }
+.cyber-scene .scanbeam {
+        position: absolute;
+        left: 0;
+        right: 0;
+        height: 52px;
+        top: -52px;
+        background: linear-gradient(
+          180deg, transparent, rgba(34, 211, 238, 0.35) 55%, rgba(165, 243, 252, 0.85) 88%, #ecfeff 100%
+        );
+        box-shadow: 0 2px 18px 2px rgba(34, 211, 238, 0.55);
+        animation: scan 3.6s ease-in-out infinite;
+        pointer-events: none;
+        z-index: 3;
+      }
+@keyframes scan {
+        0% { top: -52px; }
+        55% { top: 100%; }
+        100% { top: 100%; }
+      }
+.cyber-scene .bracket {
+        position: absolute;
+        width: 26px;
+        height: 26px;
+        z-index: 4;
+        filter: drop-shadow(0 0 5px rgba(34, 211, 238, 0.9));
+      }
+.cyber-scene .bracket.tl { top: -7px; left: -7px; border-top: 3px solid #22d3ee; border-left: 3px solid #22d3ee; border-top-left-radius: 8px; }
+.cyber-scene .bracket.tr { top: -7px; right: -7px; border-top: 3px solid #22d3ee; border-right: 3px solid #22d3ee; border-top-right-radius: 8px; }
+.cyber-scene .bracket.bl { bottom: -7px; left: -7px; border-bottom: 3px solid #22d3ee; border-left: 3px solid #22d3ee; border-bottom-left-radius: 8px; }
+.cyber-scene .bracket.br { bottom: -7px; right: -7px; border-bottom: 3px solid #22d3ee; border-right: 3px solid #22d3ee; border-bottom-right-radius: 8px; }
+.cyber-scene .photo-chip-label {
+        position: absolute;
+        left: 10px;
+        bottom: 8px;
+        z-index: 4;
+        font-size: 8.5px;
+        letter-spacing: 0.22em;
+        color: rgba(207, 250, 254, 0.85);
+        text-transform: uppercase;
+        text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+      }
+/* identity block */
+.cyber-scene .identity { margin-top: 12px; text-align: center; }
+.cyber-scene .identity .name {
+        font-family: "Chakra Petch", sans-serif;
+        font-weight: 700;
+        font-size: 23px;
+        letter-spacing: 0.18em;
+        color: #f8fafc;
+        line-height: 1.05;
+        text-shadow: 0 0 18px rgba(34, 211, 238, 0.35);
+      }
+.cyber-scene .identity .role {
+        margin-top: 4px;
+        font-size: 10px;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        color: #7dd3fc;
+      }
+.cyber-scene .id-grid {
+        margin-top: 10px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 8px;
+      }
+.cyber-scene .id-cell {
+        border: 1px solid rgba(125, 211, 252, 0.22);
+        border-radius: 8px;
+        padding: 6px 4px 5px;
+        background: rgba(8, 20, 30, 0.45);
+      }
+.cyber-scene .id-cell .k {
+        font-size: 7.5px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: #7d93a3;
+      }
+.cyber-scene .id-cell .v {
+        font-size: 11px;
+        font-weight: 600;
+        color: #e0f2fe;
+        margin-top: 2px;
+        white-space: nowrap;
+      }
+/* footer: chip + barcode */
+.cyber-scene .card-foot {
+        margin-top: auto;
+        padding-top: 10px;
+        display: flex;
+        align-items: flex-end;
+        gap: 14px;
+      }
+.cyber-scene .chip-block { flex: none; text-align: center; }
+.cyber-scene .chip {
+        width: 46px;
+        height: 34px;
+        border-radius: 6px;
+        background: linear-gradient(135deg, #f6d365 0%, #d4af37 35%, #a97e14 60%, #e9c860 100%);
+        border: 1px solid rgba(120, 84, 10, 0.8);
+        position: relative;
+        box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.7), 0 2px 6px rgba(0, 0, 0, 0.5);
+        overflow: hidden;
+      }
+.cyber-scene .chip::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(90deg, transparent 31%, rgba(120, 84, 10, 0.75) 31% 34%, transparent 34% 66%, rgba(120, 84, 10, 0.75) 66% 69%, transparent 69%),
+          linear-gradient(0deg, transparent 44%, rgba(120, 84, 10, 0.75) 44% 56%, transparent 56%);
+      }
+.cyber-scene .chip::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 15px;
+        height: 11px;
+        transform: translate(-50%, -50%);
+        border: 1.5px solid rgba(120, 84, 10, 0.8);
+        border-radius: 3px;
+      }
+.cyber-scene .chip-block .chip-lbl {
+        margin-top: 4px;
+        font-size: 7.5px;
+        letter-spacing: 0.2em;
+        color: #93a9b8;
+        text-transform: uppercase;
+      }
+.cyber-scene .barcode-block { flex: 1; min-width: 0; }
+.cyber-scene .barcode {
+        display: flex;
+        align-items: stretch;
+        height: 34px;
+        gap: 0;
+        background: #f8fafc;
+        border-radius: 4px;
+        padding: 4px 6px;
+      }
+.cyber-scene .barcode i { display: block; background: #0b1520; }
+.cyber-scene .barcode-num {
+        margin-top: 4px;
+        text-align: center;
+        font-size: 10px;
+        letter-spacing: 0.3em;
+        color: #bae6fd;
+      }
+.cyber-scene .side-stamp {
+        flex: none;
+        font-size: 8px;
+        letter-spacing: 0.16em;
+        color: #a5f3fc;
+        border: 1px solid rgba(103, 232, 249, 0.5);
+        border-radius: 5px;
+        padding: 4px 5px;
+        text-transform: uppercase;
+        writing-mode: vertical-rl;
+        background: rgba(8, 47, 73, 0.35);
+      }
+/* ---------- card back ---------- */
+.cyber-scene .back .card-inner { padding-top: 0; }
+.cyber-scene .magstripe {
+        margin: 0 -18px;
+        height: 44px;
+        background: linear-gradient(180deg, #05090d, #131c24 50%, #05090d);
+        border-bottom: 1px solid rgba(125, 211, 252, 0.25);
+      }
+.cyber-scene .back h2 {
+        font-family: "Chakra Petch", sans-serif;
+        font-size: 14px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        margin: 18px 0 4px;
+        color: #f0f9ff;
+        line-height: 1.35;
+      }
+.cyber-scene .back .back-sub {
+        font-size: 9.5px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: #7dd3fc;
+      }
+.cyber-scene .sig-strip {
+        margin-top: 18px;
+        background: #e8eef2;
+        border-radius: 4px;
+        padding: 8px 12px 6px;
+        color: #334155;
+      }
+.cyber-scene .sig-strip .sig {
+        font-family: "Chakra Petch", sans-serif;
+        font-style: italic;
+        font-weight: 600;
+        font-size: 17px;
+        color: #0f2a3d;
+      }
+.cyber-scene .sig-strip .sig-lbl { font-size: 7.5px; letter-spacing: 0.2em; text-transform: uppercase; color: #64748b; }
+.cyber-scene .back-lines { margin-top: 16px; font-size: 10.5px; line-height: 1.9; color: #a9c3d2; }
+.cyber-scene .back-lines b { color: #e0f2fe; font-weight: 600; }
+.cyber-scene .back .barcode { height: 46px; margin-top: 16px; }
+.cyber-scene .holo-seal {
+        margin: 18px auto 0;
+        width: 74px;
+        height: 74px;
+        border-radius: 50%;
+        background: conic-gradient(from 20deg, #f0abfc, #67e8f9, #fde68a, #86efac, #93c5fd, #f0abfc);
+        opacity: 0.85;
+        display: grid;
+        place-items: center;
+        box-shadow: 0 0 22px -4px rgba(103, 232, 249, 0.7);
+      }
+.cyber-scene .holo-seal span {
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        background: #0a141d;
+        display: grid;
+        place-items: center;
+        font-size: 8px;
+        letter-spacing: 0.14em;
+        color: #a5f3fc;
+        text-align: center;
+        line-height: 1.5;
+      }
+.cyber-scene .back-foot {
+        margin-top: auto;
+        font-size: 8.5px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: #647d8d;
+        text-align: center;
+        line-height: 1.7;
+      }
+/* ---------- controls ---------- */
+.cyber-scene .controls {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+        margin-top: 6px;
+      }
+.cyber-scene .controls button {
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 12.5px;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        padding: 11px 18px;
+        border-radius: 999px;
+        border: 1px solid rgba(120, 200, 235, 0.3);
+        background: #0e1a23;
+        color: #d9f2ff;
+        cursor: pointer;
+        min-height: 44px;
+      }
+.cyber-scene .controls button:active { transform: scale(0.97); }
+.cyber-scene .controls button:focus-visible { outline: 2px solid #22d3ee; outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) {
+.cyber-scene .scanbeam { animation: none; top: 40%; opacity: 0.5; }
+.cyber-scene .flip { transition: none; }
+}
