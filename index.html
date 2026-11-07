@@ -38,13 +38,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/animations.css">
   <link rel="stylesheet" href="css/responsive.css">
-    <link rel="stylesheet" href="css/student-card.css">
+    <link rel="stylesheet" href="css/cyber-card.css">
   <link rel="stylesheet" href="css/hero-3d.css">
   <script>document.documentElement.classList.add('js');</script>
 </head>
@@ -101,7 +102,123 @@
         </div>
 
         <div class="hero-visual hero-enter" aria-label="Portrait of Inam Ullah">
-          <div class="id-scene"><div class="lanyard"><div class="lanyard-clip"></div></div><div class="id-tilt"><div class="id-flipper"><article class="id-face id-front"><div class="id-front-head"><div class="id-logo">IU</div><h3>STUDENT ID CARD<span>BS COMPUTER SCIENCE</span></h3><span class="id-chip">CS-IU-2366104</span></div><div class="id-front-body"><div class="id-person"><img class="id-photo" src="assets/images/profile.webp" alt="Portrait of Inam Ullah" width="400" height="400"><div><p class="id-name">Inam Ullah</p><p class="degree">BS Computer Science</p><p class="role">Computer Science Student</p></div></div><p class="id-active">ACTIVE STUDENT</p></div><dl class="id-grid"><div><dt>STUDENT ID</dt><dd>CS-IU-2366104</dd></div><div><dt>PROGRAM</dt><dd>BS Computer Science</dd></div><div><dt>NAME</dt><dd>Inam Ullah</dd></div><div><dt>FOCUS</dt><dd>Flutter and Web Development</dd></div></dl><div class="id-front-foot"><div><div class="id-barcode"></div><div class="id-barcode-label">CS-IU-2366104</div></div><button class="id-flip-btn" type="button" data-flip>Flip ID Card</button></div></article><article class="id-face id-back"><div class="id-back-top"></div><div class="id-back-nameplate"><p class="id-name">Inam Ullah</p><span class="id-chip">CS-IU-2366104</span></div><div class="id-record"><h4>STUDENT RECORD</h4><ul><li>Student ID: <b>CS-IU-2366104</b></li><li>Program: <b>BS Computer Science</b></li><li>Focus: <b>Flutter and Web Development</b></li></ul></div><p class="id-cert">This card identifies <b>Inam Ullah</b> as a BS Computer Science student.</p><div class="id-back-foot"><span>STUDENT ID CARD</span><button class="id-flip-btn" type="button" data-flip>Flip ID Card</button></div></article></div></div></div>
+          <div class="cyber-scene">
+      <div class="stage" id="stage">
+        <div class="tilt" id="tilt">
+          <div class="flip" id="flip">
+
+            <!-- ===== FRONT ===== -->
+            <section class="face card front" aria-label="Cyber ID card front">
+              <div class="sheen"></div>
+              <div class="glare"></div>
+              <div class="card-inner">
+                <div class="slot-row"><div class="slot" aria-hidden="true"></div></div>
+
+                <div class="card-head">
+                  <div class="crest" aria-hidden="true">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#67e8f9" stroke-width="1.8" stroke-linejoin="round">
+                      <path d="M12 3l7 3v5c0 4.6-3 7.7-7 9-4-1.3-7-4.4-7-9V6l7-3z" />
+                      <path d="M9 12l2 2 4-4" stroke-linecap="round" />
+                    </svg>
+                  </div>
+                  <div class="head-text">
+                    <div class="uni">GOVT COLLEGE OF MANAGEMENT SCIENCE</div>
+                    <div class="dept">Sangota · Swat — Clearance Dept</div>
+                  </div>
+                  <div class="clearance" aria-label="Clearance level 7">
+                    <div class="lvl">07</div>
+                    <div class="lbl">Clearance</div>
+                  </div>
+                </div>
+
+                <!-- status tags ABOVE the photo -->
+                <div class="tagbar" aria-label="Student status tags">
+                  <span class="tag">BS Computer Science</span>
+                  <span class="tag">7th Semester</span>
+                  <span class="tag verified">✓ Verified Student</span>
+                </div>
+
+                <div class="photo-wrap">
+                  <div class="photo-frame">
+                    <picture>
+                      <source srcset="assets/images/profile.webp" type="image/webp">
+                      <img src="assets/images/profile.png" alt="Portrait of Inam Ullah" width="400" height="400">
+                    </picture>
+                    <div class="scanbeam" aria-hidden="true"></div>
+                    <div class="photo-chip-label">Bio-Scan · Active</div>
+                  </div>
+                  <span class="bracket tl" aria-hidden="true"></span>
+                  <span class="bracket tr" aria-hidden="true"></span>
+                  <span class="bracket bl" aria-hidden="true"></span>
+                  <span class="bracket br" aria-hidden="true"></span>
+                </div>
+
+                <div class="identity">
+                  <div class="name">INAM ULLAH</div>
+                  <div class="role">Student · Computer Science</div>
+                  <div class="id-grid">
+                    <div class="id-cell"><div class="k">ID No</div><div class="v">CS-IU-2366104</div></div>
+                    <div class="id-cell"><div class="k">Session</div><div class="v">2023 – 2027</div></div>
+                    <div class="id-cell"><div class="k">Expires</div><div class="v">09 / 2027</div></div>
+                  </div>
+                </div>
+
+                <div class="card-foot">
+                  <div class="chip-block">
+                    <div class="chip" aria-hidden="true"></div>
+                    <div class="chip-lbl">Smart Chip</div>
+                  </div>
+                  <div class="barcode-block">
+                    <div class="barcode" data-barcode aria-hidden="true"></div>
+                    <div class="barcode-num">CS-IU-2366104</div>
+                  </div>
+                  <div class="side-stamp">Student ID</div>
+                </div>
+              </div>
+            </section>
+
+            <!-- ===== BACK ===== -->
+            <section class="face card back" aria-label="Cyber ID card back">
+              <div class="sheen"></div>
+              <div class="glare"></div>
+              <div class="card-inner">
+                <div class="magstripe" aria-hidden="true"></div>
+                <h2>Govt College of Management Science</h2>
+                <div class="back-sub">Sangota · Swat — Student Credential</div>
+
+                <div class="sig-strip">
+                  <div class="sig">Inam Ullah</div>
+                  <div class="sig-lbl">Authorised signature</div>
+                </div>
+
+                <div class="back-lines">
+                  <div><b>Holder:</b> Inam Ullah — BS Computer Science</div>
+                  <div><b>Status:</b> Verified Student · 7th Semester</div>
+                  <div><b>Access:</b> Library · Labs · Examination Hall</div>
+                </div>
+
+                <div class="barcode" data-barcode aria-hidden="true" style="border-radius:4px;"></div>
+                <div class="barcode-num">GCMS · CS · IU · 2366104</div>
+
+                <div class="holo-seal" aria-hidden="true"><span>HOLO<br />SEAL</span></div>
+
+                <div class="back-foot">
+                  This card is the property of GCMS Sangota Swat.<br />
+                  If found, please return it to the college office.
+                </div>
+              </div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="controls">
+        <button type="button" id="flipBtn">⟲ Flip card</button>
+        <button type="button" id="tiltBtn" aria-pressed="true">3D tilt: On</button>
+        <button type="button" id="scanBtn" aria-pressed="true">Scanline: On</button>
+      </div>
+          </div>
           
           <div class="floating-tool tool-flutter" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m13 2-9 9 4 4L22 2h-9Zm0 10-5 5 5 5h9l-5-5 5-5h-9Z"/></svg> Flutter</div>
           <div class="floating-tool tool-python" aria-hidden="true"><span>Py</span> Python</div>
@@ -285,7 +402,7 @@
   <script src="js/github.js" defer></script>
   <script src="js/contact.js" defer></script>
   <script src="js/main.js" defer></script>
-  <script src="js/student-card.js" defer></script><script src="js/hero-3d-cinematic.js" defer></script>
+  <script src="js/cyber-card.js" defer></script><script src="js/hero-3d-cinematic.js" defer></script>
   <script>
     (function () {
       var wordEl = document.getElementById('rotating-word');
