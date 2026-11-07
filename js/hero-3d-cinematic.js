@@ -236,12 +236,48 @@
     })
     .catch(function () { /* CDN unreachable - hero stays as before. */ });
   }
+  /* Deferred start (perf fix): Three.js (three.module.min.js, 162.5KiB) is an
+   * ambient-only dependency — the hero copy, card and buttons are fully usable
+   * without it — so it must never compete with first paint or LCP, and its
+   * long tasks (259/101/60/55/50ms) must not run during initial load. Start
+   * it (a) immediately on the user's first engagement (mouse, touch, scroll,
+   * keys), (b) otherwise once LCP has happened and the browser is idle, or
+   * (c) at the latest 6s after boot as an absolute fallback. The scene itself
+   * (6 language chips orbiting a glowing core) is unchanged; only its start
+   * time moves. startScene() is still guarded by `started`, so multiple
+   * triggers can never build the scene twice. */
+  var sceneScheduled = false;
   function scheduleScene() {
-    if ('requestIdleCallback' in window) {
-      window.requestIdleCallback(startScene, { timeout: 1500 });
+    if (sceneScheduled) return;
+    sceneScheduled = true;
+
+    /* (a) First engagement: start the scene right away. */
+    var engageEvents = ['pointermove', 'scroll', 'keydown', 'touchstart'];
+    engageEvents.forEach(function (ev) {
+      window.addEventListener(ev, startScene, { once: true, passive: true });
+    });
+
+    /* (b) Otherwise: after LCP, when the browser is idle. */
+    var idleStart = function () {
+      if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(startScene, { timeout: 4000 });
+      } else {
+        setTimeout(startScene, 1200);
+      }
+    };
+    if ('PerformanceObserver' in window) {
+      try {
+        var lcpObserver = new PerformanceObserver(function (list) {
+          if (list.getEntries().length) { lcpObserver.disconnect(); idleStart(); }
+        });
+        lcpObserver.observe({ type: 'largest-contentful-paint', buffered: true });
+      } catch (e) { idleStart(); }
     } else {
-      setTimeout(startScene, 500);
+      idleStart();
     }
+
+    /* (c) Absolute fallback so the scene still appears with no interaction. */
+    setTimeout(startScene, 6000);
   }
   if (document.readyState === 'complete') {
     scheduleScene();
