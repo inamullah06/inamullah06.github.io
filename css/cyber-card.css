@@ -252,7 +252,8 @@
         left: 0;
         right: 0;
         height: 52px;
-        top: -52px;
+        top: 0;
+        transform: translateY(-52px);
         background: linear-gradient(
           180deg, transparent, rgba(34, 211, 238, 0.35) 55%, rgba(165, 243, 252, 0.85) 88%, #ecfeff 100%
         );
@@ -261,10 +262,15 @@
         pointer-events: none;
         z-index: 3;
       }
+/* Perf: the beam now moves with transform (composited) instead of the "top"
+   property, so the sweep no longer causes layout shifts. 232px is the
+   .photo-frame height: the beam starts just above the frame (-52px) and
+   ends with its top edge at the frame's bottom edge (232px) — visually
+   identical to the old top:-52px -> top:100% motion. */
 @keyframes scan {
-        0% { top: -52px; }
-        55% { top: 100%; }
-        100% { top: 100%; }
+        0% { transform: translateY(-52px); }
+        55% { transform: translateY(232px); }
+        100% { transform: translateY(232px); }
       }
 .cyber-scene .bracket {
         position: absolute;
@@ -504,6 +510,6 @@
 .cyber-scene .controls button:active { transform: scale(0.97); }
 .cyber-scene .controls button:focus-visible { outline: 2px solid #22d3ee; outline-offset: 2px; }
 @media (prefers-reduced-motion: reduce) {
-.cyber-scene .scanbeam { animation: none; top: 40%; opacity: 0.5; }
+.cyber-scene .scanbeam { animation: none; top: 0; transform: translateY(92.8px); opacity: 0.5; }/* 92.8px = 40% of the 232px photo frame, same resting spot as before. */
 .cyber-scene .flip { transition: none; }
 }
