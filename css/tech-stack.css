@@ -1,0 +1,42 @@
+/* Tech Stack tile grid — adapted from the 2026-11-03 alfari-inspired preview.
+   Same 13 real skills as the grouped skills list above it, presented as
+   individual tiles with monogram marks (alfari-style showcase). The block is
+   hidden until js/tech-stack.js renders the tiles and adds .is-ready, so
+   no-JS visitors (and a failed config load) never see an empty block.
+   Uses the site's existing tokens; nothing else changes. */
+.tech-stack-block { display: none; }
+.tech-stack-block.is-ready { display: block; }
+.tech-stack-title { margin-top: 40px; font-size: 1.05rem; }
+.tech-stack-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 14px;
+  margin-top: 20px;
+}
+.tech-tile {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px 12px 18px;
+  text-align: center;
+  transition: transform .25s var(--ease), border-color .25s var(--ease);
+}
+.tech-tile:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-strong);
+}
+.tech-mark {
+  width: 52px;
+  height: 52px;
+  margin: 0 auto 12px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 20px;
+  color: #fff;
+  background: linear-gradient(135deg, var(--accent), var(--secondary));
+}
+.tech-tile span { display: block; font-size: 15px; font-weight: 600; }
+.tech-tile small { display: block; color: var(--muted); font-size: 12px; margin-top: 4px; }
