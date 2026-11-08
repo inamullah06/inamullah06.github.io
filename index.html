@@ -48,10 +48,18 @@
   <link rel="stylesheet" href="css/responsive.css">
     <link rel="stylesheet" href="css/cyber-card.css">
   <link rel="stylesheet" href="css/hero-3d.css">
+  <link rel="stylesheet" href="css/tech-stack.css">
+  <link rel="stylesheet" href="css/loader.css">
   <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <div class="loader" id="site-loader" role="status" aria-label="Loading portfolio">
+    <strong><span id="loader-num">0</span><em>%</em></strong>
+    <div class="bar"><i id="loader-bar"></i></div>
+    <p>Loading portfolio…</p>
+  </div>
 
   <header class="site-header" data-header>
     <nav class="nav container" aria-label="Primary navigation">
@@ -277,6 +285,10 @@
           <p>Skills are grouped by focus, without arbitrary ratings or progress bars.</p>
         </div>
         <div class="skills-grid reveal" id="skills-grid"></div>
+        <div class="tech-stack-block" id="tech-stack-block">
+          <h3 class="tech-stack-title">Tech stack</h3>
+          <div class="tech-stack-grid" id="tech-stack-grid"></div>
+        </div>
         <noscript><p class="noscript-note">Flutter · Dart · HTML5 · CSS3 · JavaScript · Python · AI fundamentals · Networking and cybersecurity fundamentals · Git · GitHub · VS Code · Android Studio · Linux</p></noscript>
       </div>
     </section>
@@ -395,6 +407,7 @@
   <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
   <a class="back-to-top icon-button" href="#home" aria-label="Back to top" data-back-to-top><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20V5m-5 5 5-5 5 5"/></svg></a>
 
+  <script src="js/loader.js" defer></script>
   <script src="js/config.js" defer></script>
   <script src="js/projects.js" defer></script>
   <script src="js/navigation.js" defer></script>
@@ -402,6 +415,7 @@
   <script src="js/github.js" defer></script>
   <script src="js/contact.js" defer></script>
   <script src="js/main.js" defer></script>
+  <script src="js/tech-stack.js" defer></script>
   <script src="js/cyber-card.js" defer></script><script src="js/hero-3d-cinematic.js" defer></script>
   <script>
     (function () {
