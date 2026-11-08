@@ -10,6 +10,7 @@
   /* Semantic tokens */
   --bg:var(--p-bg);--surface:var(--p-surface);--card:var(--p-card);
   --accent:var(--p-purple);--secondary:var(--p-blue);
+  --accent-2:var(--p-blue);
   --text:var(--p-text);--muted:var(--p-muted);
   --border:oklch(1 0 0 / 0.10);--border-strong:oklch(1 0 0 / 0.18);
   --accent-soft:oklch(0.60563 0.21892 292.717 / 0.13);
